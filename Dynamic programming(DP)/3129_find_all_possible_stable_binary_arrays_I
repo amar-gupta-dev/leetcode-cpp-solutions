@@ -1,0 +1,36 @@
+// Leetcode  3129
+// Problem: Find all possible stable binary arrays |
+// Topic: DP
+// Diff: medium
+
+class Solution {
+public:
+        const int MOD = 1e9 + 7;  
+        int memo[201][201][3];
+
+        int dfs(int z, int o, int last, int limit) {
+            if(z == 0 && o == 0) return 1;
+
+            if(memo[z][o][last] != -1) return memo[z][o][last];
+
+            long long ans = 0;
+
+            if(last != 0) {
+                for(int i  = 1; i <= min(limit, z); i++) {
+                    ans = (ans + dfs(z - i, o, 0, limit))  % MOD;
+                }
+            }
+
+            if(last != 1) {
+                for(int i = 1; i <= min(limit, o); i++) {
+                    ans = (ans + dfs(z, o - i, 1, limit)) % MOD;
+                }
+            }
+            return memo[z][o][last] = ans;
+        }
+    int numberOfStableArrays(int zero, int one, int limit) {
+            memset(memo, -1, sizeof(memo));
+            return dfs(zero, one, 2, limit);
+
+    }
+};
