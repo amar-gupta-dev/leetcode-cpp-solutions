@@ -20,6 +20,11 @@ This repository documents my journey of strengthening **Data Structures and Algo
 leetcode-cpp-solutions/
 │
 ├── Arrays/
+├── prefix-sum/
+├── hash-map/
+├── matrix/
+└── hard/
+      └── equal-sum-grid-partition-ii.cpp
 ├── Strings/
 ├── Stack/
 ├── Queue/
